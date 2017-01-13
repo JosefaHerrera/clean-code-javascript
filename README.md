@@ -3,9 +3,9 @@
 ## Table of Contents
   1. [Introducción](#introduccion)
   2. [Variables](#variables)
-  3. [Functions](#funciones)
-  4. [Objects and Data Structures](#objects-and-data-structures)
-  5. [Classes](#classes)
+  3. [Funciones](#funciones)
+  4. [Objetos y Estructura de Datos](#objetos-y-estructura-de-datos)
+  5. [Clases](#clases)
   6. [Testing](#testing)
   7. [Concurrency](#concurrency)
   8. [Error Handling](#error-handling)
@@ -513,16 +513,8 @@ console.log(newName); // ['Ryan', 'McDermott'];
 ```
 **[⬆ volver arriba](#table-of-contents)**
 
-### Don't write to global functions
-Polluting globals is a Mal practice in JavaScript because you could clash with another
-library and the user of your API would be none-the-wiser until they get an
-exception in production. Let's think about an example: what if you wanted to
-extend JavaScript's native Array method to have a `diff` method that could
-show the difference between two arrays? You could write your new function
-to the `Array.prototype`, but it could clash with another library that tried
-to do the same thing. What if that other library was just using `diff` to find
-the difference between the first and last elements of an array? This is why it
-would be much better to just use ES2015/ES6 classes and simply extend the `Array` global.
+### No escribir en funciones globales
+Contaminacion global es una mala practica en JavaScript porque podría chocar con otra biblioteca y el usuario de tu API no se enteraría hasta obtener un excepción en produción. Pensemos en un ejemplo: y si deseas extender los metodos de los Arreglos de JavaScript para tener un metodo `diff` Que podría mostrar la diferencia entre dos arreglos? Podrías escribir tu nueva función en el `Array.prototype`, pero podría chocar con otra libreria que trata de hacer lo mismo. Qué pasa si esa otra biblioteca sólo estaba usando `diff` para encontrar la diferencia entre el primer y el último elemento de un array? Esta es la razón por la cual sería mucho mejor usar las clases de ES2015/ES6 y simplemente ampliar el 'Array` global.
 
 **Mal:**
 ```javascript
@@ -554,10 +546,9 @@ class SuperArray extends Array {
 ```
 **[⬆ volver arriba](#table-of-contents)**
 
-### Favor functional programming over imperative programming
-JavaScript isn't a functional language in the way that Haskell is, but it has
-a functional flavor to it. Functional languages are cleaner and easier to test.
-Favor this style of programming when you can.
+### Favorecer la programación funcional sobre la programación imperativa
+JavaScript no es un lenguaje funcional en la forma en que Haskell lo es, pero tiene un sabor funcional similar. Los lenguajes funcionales son más limpios y fáciles de probar.
+Favorece este estilo de programación cuando puedas.
 
 **Mal:**
 ```javascript
@@ -654,15 +645,9 @@ if (isDOMNodePresent(node)) {
 ```
 **[⬆ volver arriba](#table-of-contents)**
 
-### Avoid conditionals
-This seems like an impossible task. Upon first hearing this, most people say,
-"how am I supposed to do anything without an `if` statement?" The answer is that
-you can use polymorphism to achieve the same task in many cases. The second
-question is usually, "well that's great but why would I want to do that?" The
-answer is a previous clean code concept we learned: a function should only do
-one thing. When you have classes and functions that have `if` statements, you
-are telling your user that your function does more than one thing. Remember,
-just do one thing.
+### Evitar condicionales
+Esto parece una tarea imposible. Al escuchar esto, la mayoría de la gente dice,
+"Cómo se supone que debo hacer algo sin declarar un `if`?" La respuesta es que se puede utilizar el polimorfismo para lograr la misma tarea en muchos casos. La segunda pregunta usualmente es, "Bueno, eso es genial, pero ¿por qué querría hacer eso?" La respuesta es un concepto de código limpio que aprendimos anterirmente : una función sólo debe hacer una cosa. Cuando tienes clases y funciones que tienen declaraciones `if`, le está diciendo a su usuario que su función hace más de una cosa. Recuerda, Solo haz una cosa.
 
 **Mal:**
 ```javascript
@@ -710,11 +695,10 @@ class Cessna extends Airplane {
 ```
 **[⬆ volver arriba](#table-of-contents)**
 
-### Avoid type-checking (part 1)
-JavaScript is untyped, which means your functions can take any type of argument.
-Sometimes you are bitten by this freedom and it becomes tempting to do
-type-checking in your functions. There are many ways to avoid having to do this.
-The first thing to consider is consistent APIs.
+### Evitar la comprobación de tipos (parte 1)
+JavaScript no es tipado, lo que significa que sus funciones pueden tomar cualquier tipo de argumento.
+A veces eres mordido por esta libertad y se vuelve tentador hacer comprobaciones de tipo en las funciones. Hay muchas maneras de evitar tener que hacer esto.
+Lo primero a considerar son las APIs consistentes.
 
 **Mal:**
 ```javascript
@@ -735,16 +719,10 @@ function travelToTexas(vehicle) {
 ```
 **[⬆ volver arriba](#table-of-contents)**
 
-### Avoid type-checking (part 2)
-If you are working with basic primitive values like strings, integers, and arrays,
-and you can't use polymorphism but you still feel the need to type-check,
-you should consider using TypeScript. It is an excellent alternative to normal
-JavaScript, as it provides you with static typing on top of standard JavaScript
-syntax. The problem with manually type-checking normal JavaScript is that
-doing it well requires so much extra verbiage that the faux "type-safety" you get
-doesn't make up for the lost readability. Keep your JavaScript clean, write
-Bien tests, and have Bien code reviews. Otherwise, do all of that but with
-TypeScript (which, like I said, is a great alternative!).
+### Evitar la comprobación de tipos (parte 2)
+Si está trabajando con valores primitivos básicos como cadenas, enteros, y arreglos,
+y no puedes usar polimorfismo pero todavía siente la necesidad de comprobar el tipo,
+debe considerar el uso de TypeScript. Es una excelente alternativa al JavaScript normal, ya que proporciona la escritura estática por encima de la sintaxis JavaScript estándar. El problema con la comprobación de tipo manual de JavaScript normal es que hacerlo bien requiere tanta verborrea extra que el falso "tipado-seguro" que se obtiene no compensa la legibilidad perdida. Mantenga su JavaScript limpio, escribe buenos tests, Y ten buenas revisiones de código. De lo contrario, hacer todo eso, pero con TypeScript (Que, como he dicho, es una gran alternativa!).
 
 **Mal:**
 ```javascript
@@ -766,12 +744,9 @@ function combine(val1, val2) {
 ```
 **[⬆ volver arriba](#table-of-contents)**
 
-### Don't over-optimize
-Modern browsers do a lot of optimization under-the-hood at runtime. A lot of
-times, if you are optimizing then you are just wasting your time. [There are Bien
-resources](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers)
-for seeing where optimization is lacking. Target those in the meantime, until
-they are fixed if they can be.
+### No sobre-optimizar
+Los navegadores modernos hacen un montón de optimización en tiempo de ejecución. Muchas veces, si usted está optimizando entonces usted está perdiendo su tiempo. [Hay buenos recursos](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers)
+para ver donde falta optimización. Dirigete a esto mientras tanto, hasta que sean reparados si es que pueden ser reparados.
 
 **Mal:**
 ```javascript
@@ -791,10 +766,8 @@ for (let i = 0; i < list.length; i++) {
 ```
 **[⬆ volver arriba](#table-of-contents)**
 
-### Remove dead code
-Dead code is just as Mal as duplicate code. There's no reason to keep it in
-your codebase. If it's not being called, get rid of it! It will still be safe
-in your version history if you still need it.
+### Eliminar código muerto
+El código muerto es tan malo como el código duplicado. No hay razón para mantenerlo en su código base. Si no se está llamando, desaste de eso! Seguirá estando seguro en tu historial de versiones si todavía lo necesitas.
 
 **Mal:**
 ```javascript
@@ -822,22 +795,16 @@ inventoryTracker('apples', req, 'www.inventory-awesome.io');
 ```
 **[⬆ volver arriba](#table-of-contents)**
 
-## **Objects and Data Structures**
-### Use getters and setters
-JavaScript doesn't have interfaces or types so it is very hard to enforce this
-pattern, because we don't have keywords like `public` and `private`. As it is,
-using getters and setters to access data on objects is far better than simply
-looking for a property on an object. "Why?" you might ask. Well, here's an
-unorganized list of reasons why:
+## **Objetos y Estructura de Datos**
+### Utiliza getters y setters
+JavaScript no tiene interfaces o tipos por lo que es muy difícil hacer cumplir este patrón, porque no tenemos palabras claves como `public` y` private`. El uso de getters y setters para acceder a datos sobre objetos es mucho mejor que simplemente buscar una propiedad en un objeto. "Por que?" podrías preguntar. Bueno, he aquí una lista desorganizada de razones del por que:
 
-* When you want to do more beyond getting an object property, you don't have
-to look up and change every accessor in your codebase.
-* Makes adding validation simple when doing a `set`.
-* Encapsulates the internal representation.
-* Easy to add logging and error handling when getting and setting.
-* Inheriting this class, you can override default functionality.
-* You can lazy load your object's properties, let's say getting it from a
-server.
+* Cuando desea hacer más cosas que obtener una propiedad de objeto, no tiene que buscar y cambiar todos los complementos en tu código base.
+* Hace la adición de validación simple cuando se hace un `set`.
+* Encapsula la representación interna.
+* Fácil de agregar registro y manejo de errores al obtener y configurar.
+* Al heredar esta clase, puede anular la funcionalidad predeterminada.
+* Puedes cargar lentamente las propiedades de tu objeto, digamos conseguirlo desde un servidor.
 
 
 **Mal:**
@@ -925,16 +892,10 @@ console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 **[⬆ volver arriba](#table-of-contents)**
 
 
-## **Classes**
-### Single Responsibility Principle (SRP)
-As stated in Clean Code, "There should never be more than one reason for a class
-to change". It's tempting to jam-pack a class with a lot of functionality, like
-when you can only take one suitcase on your flight. The issue with this is
-that your class won't be conceptually cohesive and it will give it many reasons
-to change. Minimizing the amount of times you need to change a class is important.
-It's important because if too much functionality is in one class and you modify a piece of it,
-it can be difficult to understand how that will affect other dependent modules in
-your codebase.
+## **Clases**
+### Principio de Responsabilidad Única (SRP)
+Como se indica en Codigo Limpio, "Nunca debe haber más de una razón para que una clase cambie". Es tentador empaquetar una clase con mucha funcionalidad, Como cuando sólo se puede llevar una maleta en su vuelo. El problema con esto es que su clase no será conceptualmente cohesiva y le dará muchas razones para cambiarla. Minimizar la cantidad de veces que necesita cambiar una clase es importante.
+Es importante porque si hay demasiada funcionalidad en una clase y se modifica una parte de ella, Puede ser difícil de entender cómo afectará a otros módulos dependientes en tu codigo base.
 
 **Mal:**
 ```javascript
@@ -983,12 +944,9 @@ class UserSettings {
 ```
 **[⬆ volver arriba](#table-of-contents)**
 
-### Open/Closed Principle (OCP)
-As stated by Bertrand Meyer, "software entities (classes, modules, functions,
-etc.) should be open for extension, but closed for modification." What does that
-mean though? This principle basically states that you should allow users to
-extend the functionality of your module without having to open up the `.js`
-source code file and manually manipulate it.
+### Principio abierto/cerrado (OCP)
+Según Bertrand Meyer, "las entidades de software (classes, modules, functions,
+etc.) deben estar abiertos para su extensión, pero cerrados para su modificación." ¿Qué significa eso? Este principio básicamente establece que debe permitir a los usuarios ampliar la funcionalidad de su módulo sin tener que abrir el archivo `.js`  de código fuente y manipularlo manualmente.
 
 **Mal:**
 ```javascript
@@ -1025,19 +983,10 @@ class AjaxRequester {
 **[⬆ volver arriba](#table-of-contents)**
 
 
-### Liskov Substitution Principle (LSP)
-This is a scary term for a very simple concept. It's formally defined as "If S
-is a subtype of T, then objects of type T may be replaced with objects of type S
-(i.e., objects of type S may substitute objects of type T) without altering any
-of the desirable properties of that program (correctness, task performed,
-etc.)." That's an even scarier definition.
+### Principio de sustitución de Liskov (LSP)
+Este es un término de miedo para un concepto muy simple. Se define formalmente como "Si S es un subtipo de T, entonces los objetos de tipo T pueden ser reemplazados por objetos de tipo S (i.e., Objetos de tipo S pueden sustituir objetos de tipo T) sin alterar ninguna de las propiedades deseables de ese programa (Corrección, tarea realizada, etc.)." Esa es una definición aún más aterradora.
 
-The best explanation for this is if you have a parent class and a child class,
-then the base class and child class can be used interchangeably without getting
-incorrect results. This might still be confusing, so let's take a look at the
-classic Square-Rectangle example. Mathematically, a square is a rectangle, but
-if you model it using the "is-a" relationship via inheritance, you quickly
-get into trouble.
+La mejor explicación para esto es si tienes una clase padre y una clase hijo, entonces la clase base y la clase hijo se pueden usar indistintamente sin obtener resultados incorrectos. Esto todavía puede ser confuso, así que echemos un vistazo al ejemplo clásico de Square-Rectangle. Matemáticamente, un cuadrado es un rectángulo, pero si lo modelas utilizando la relación "es-un" a través de la herencia, rápidamente te metes en problemas.
 
 **Mal:**
 ```javascript
@@ -1161,19 +1110,12 @@ renderLargeShapes(shapes);
 ```
 **[⬆ volver arriba](#table-of-contents)**
 
-### Interface Segregation Principle (ISP)
-JavaScript doesn't have interfaces so this principle doesn't apply as strictly
-as others. However, it's important and relevant even with JavaScript's lack of
-type system.
+### Principio de Segregación de Interfaz (ISP)
+JavaScript no tiene interfaces por lo que este principio no se aplica tan estrictamente como otros. Sin embargo, es importante y relevante, incluso con JavaScript que no es tipado.
 
-ISP states that "Clients should not be forced to depend upon interfaces that
-they do not use." Interfaces are implicit contracts in JavaScript because of
-duck typing.
+ISP establece que "los clientes no deben verse obligados a depender de interfaces que no usan." Interfaces son contratos implícitos en JavaScript debido a la tipificación falsa.
 
-A Bien example to look at that demonstrates this principle in JavaScript is for
-classes that require large settings objects. Not requiring clients to setup
-huge amounts of options is beneficial, because most of the time they won't need
-all of the settings. Making them optional helps prevent having a "fat interface".
+Un buen ejemplo que demuestra este principio en JavaScript son las clases que requieren grandes objetos de configuración. No es necesario que los clientes configuren enormes cantidades de opciones, porque la mayoría de las veces no necesitarán todos los ajustes. Hacerlos opcionales ayuda a evitar tener una "interfaz pesada".
 
 **Mal:**
 ```javascript
@@ -1235,26 +1177,16 @@ const $ = new DOMTraverser({
 ```
 **[⬆ volver arriba](#table-of-contents)**
 
-### Dependency Inversion Principle (DIP)
-This principle states two essential things:
-1. High-level modules should not depend on low-level modules. Both should
-depend on abstractions.
-2. Abstractions should not depend upon details. Details should depend on
-abstractions.
+### Principio de inversión de dependencias (DIP)
+Este principio establece dos cosas esenciales:
+1. Los módulos de alto nivel no deben depender de módulos de bajo nivel. Ambos deben depender de abstracciones.
+2. Las abstracciones no deben depender de detalles. Los detalles deben depender de las abstracciones.
 
-This can be hard to understand at first, but if you've worked with Angular.js,
-you've seen an implementation of this principle in the form of Dependency
-Injection (DI). While they are not identical concepts, DIP keeps high-level
-modules from knowing the details of its low-level modules and setting them up.
-It can accomplish this through DI. A huge benefit of this is that it reduces
-the coupling between modules. Coupling is a very Mal development pattern because
-it makes your code hard to refactor.
+Esto puede ser difícil de entender al principio, pero si has trabajado con Angular.js,
+usted ha visto una puesta en práctica de este principio en la forma de inyección de dependencia (DI). Aunque no son conceptos idénticos, DIP mantiene los módulos de alto nivel de conocer los detalles de sus módulos de bajo nivel y configurarlos.
+Puede lograrse a través de DI. Una gran ventaja de esto es que reduce el acoplamiento entre módulos. El acoplamiento es un patrón de desarrollo muy malo porque hace que su código sea difícil de refactorizar.
 
-As stated previously, JavaScript doesn't have interfaces so the abstractions
-that are depended upon are implicit contracts. That is to say, the methods
-and properties that an object/class exposes to another object/class. In the
-example below, the implicit contract is that any Request module for an
-`InventoryTracker` will have a `requestItems` method.
+Como se ha indicado anteriormente, JavaScript no tiene interfaces por lo que las abstracciones dependientes son contratos implícitos.Es decir, Los métodos y propiedades que un objeto/clase expone a otro objeto/clase.En el ejemplo siguiente, El contrato implícito es que cualquier módulo Request para un `InventoryTracker` tendrá un método` requestItems`.
 
 **Mal:**
 ```javascript
@@ -1323,18 +1255,15 @@ class InventoryRequesterV2 {
   }
 }
 
-// By constructing our dependencies externally and injecting them, we can easily
-// substitute our request module for a fancy new one that uses WebSockets.
+// Construyendo externamente nuestras dependencias e inyectándolas, podemos fácilmente
+// Sustituir nuestro módulo de Request por uno nuevo que utilice WebSockets.
 const inventoryTracker = new InventoryTracker(['apples', 'bananas'], new InventoryRequesterV2());
 inventoryTracker.requestItems();
 ```
 **[⬆ volver arriba](#table-of-contents)**
 
-### Prefer ES2015/ES6 classes over ES5 plain functions
-It's very difficult to get readable class inheritance, construction, and method
-definitions for classical ES5 classes. If you need inheritance (and be aware
-that you might not), then prefer classes. However, prefer small functions over
-classes until you find yourself needing larger and more complex objects.
+### Prefeir clases ES2015/ES6 sobre funciones planas de ES5
+Es muy difícil obtener herencia de clases legible, construcción y definicion de metodos para las clasicas clases de ES5. Si necesita herencia (Y tenga en cuenta que tal vez no), entonces prefiera las clases. Sin embargo, prefiera las funciones pequeñas sobre las clases hasta que se encuentre necesitando objetos más grandes y más complejos.
 
 **Mal:**
 ```javascript
