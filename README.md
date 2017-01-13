@@ -1,6 +1,6 @@
 # clean-code-javascript
 
-## Table of Contents
+## Tabla de Contenidos
   1. [Introducción](#introduccion)
   2. [Variables](#variables)
   3. [Funciones](#funciones)
@@ -37,7 +37,7 @@ const yyyymmdstr = moment().format('YYYY/MM/DD');
 ```javascript
 const yearMonthDay = moment().format('YYYY/MM/DD');
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Usa el mismo vocabulario para el mismo tipo de variable
 
@@ -52,7 +52,7 @@ getCustomerRecord();
 ```javascript
 getUser();
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Utiliza nombres se puedan buscar
 Leeremos más código de lo que escribiremos. Es importante que el código que escribimos sea legible y pueda ser consultado. Al no nombrar variables que terminen siendo significativas para entender nuestro programa, lastimamos a nuestros lectores.
@@ -78,7 +78,7 @@ setTimeout(() => {
 }, MILLISECONDS_IN_A_DAY);
 
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Utilice variables explicativas
 **Mal:**
@@ -95,7 +95,7 @@ const cityStateRegex = /^[^,\\]+[,\\\s]+(.+?)\s*(\d{5})?$/;
 const [, city, state] = address.match(cityStateRegex);
 saveCityState(city, state);
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Evitar Mapeo Mental
 Explícito es mejor que implícito.
@@ -126,7 +126,7 @@ locations.forEach((location) => {
   dispatch(location);
 });
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### No agregue contexto innecesario
 Si su nombre de clase / objeto le dice algo, no lo repita en su nombre de variable.
@@ -156,9 +156,9 @@ function paintCar(car) {
   car.color = 'Red';
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
-### Usar argumentos predeterminados en lugar de short circuiting o condicionales
+### Usar argumentos predeterminados en lugar de enredaderes o condicionales
 
 **Mal:**
 ```javascript
@@ -176,7 +176,7 @@ function createMicrobrewery(breweryName = 'Hipster Brew Co.') {
 }
 
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ## **Funciones**
 ### Argumentos de la función (2 o menos idealmente)
@@ -208,7 +208,7 @@ function createMenu(config) {
 }
 
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 
 ### Las funciones deben hacer solo una cosa
@@ -240,7 +240,7 @@ function isClientActive(client) {
   return clientRecord.isActive();
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Los nombres de las funciones deben decir lo que hacen
 
@@ -265,7 +265,7 @@ function addMonthToDate(month, date) {
 const date = new Date();
 addMonthToDate(1, date);
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Las funciones deben ser sólo un nivel de abstracción
 Cuando tienes mas de un nivel de abstración tu funcion esta haciendo demasido
@@ -332,7 +332,7 @@ function parseBetterJSAlternative(code) {
   });
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Elimina código duplicado
 Nunca, nunca, bajo ninguna circunstancia, tenga código duplicado. No hay razón para ello y es muy posiblemente el peor pecado que puede cometer como un desarrollador profesional. El código duplicado significa que hay más de un lugar para alterar algo si necesita cambiar alguna lógica. JavaScript no fuertemente tipado, por lo que hace tener funciones genéricas bastante fácil. ¡Aprovéchate de eso! Herramientas como [jsinspect](https://github.com/danielstjules/jsinspect) Puede ayudarle a encontrar código duplicado elegible para la refactorización.
@@ -393,7 +393,7 @@ function showList(employees) {
   });
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Establecer objetos predeterminados con Object.assign
 
@@ -439,7 +439,7 @@ function createMenu(config) {
 
 createMenu(menuConfig);
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 
 ### No utilice banderas como parámetros de función
@@ -466,7 +466,7 @@ function createTempFile(name) {
   createFile(`./temp/${name}`);
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Evite los efectos secundarios
 A function produces a side effect if it does anything other than take a value in
@@ -511,7 +511,7 @@ const newName = splitIntoFirstAndLastName(name);
 console.log(name); // 'Ryan McDermott';
 console.log(newName); // ['Ryan', 'McDermott'];
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### No escribir en funciones globales
 Contaminacion global es una mala practica en JavaScript porque podría chocar con otra biblioteca y el usuario de tu API no se enteraría hasta obtener un excepción en produción. Pensemos en un ejemplo: y si deseas extender los metodos de los Arreglos de JavaScript para tener un metodo `diff` Que podría mostrar la diferencia entre dos arreglos? Podrías escribir tu nueva función en el `Array.prototype`, pero podría chocar con otra libreria que trata de hacer lo mismo. Qué pasa si esa otra biblioteca sólo estaba usando `diff` para encontrar la diferencia entre el primer y el último elemento de un array? Esta es la razón por la cual sería mucho mejor usar las clases de ES2015/ES6 y simplemente ampliar el 'Array` global.
@@ -544,7 +544,7 @@ class SuperArray extends Array {
   }
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Favorecer la programación funcional sobre la programación imperativa
 JavaScript no es un lenguaje funcional en la forma en que Haskell lo es, pero tiene un sabor funcional similar. Los lenguajes funcionales son más limpios y fáciles de probar.
@@ -597,7 +597,7 @@ const totalOutput = programmerOutput
   .map((programmer) => programmer.linesOfCode)
   .reduce((acc, linesOfCode) => acc + linesOfCode, 0);
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Encapsulate conditionals
 
@@ -618,7 +618,7 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
   // ...
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Avoid negative conditionals
 
@@ -643,7 +643,7 @@ if (isDOMNodePresent(node)) {
   // ...
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Evitar condicionales
 Esto parece una tarea imposible. Al escuchar esto, la mayoría de la gente dice,
@@ -693,7 +693,7 @@ class Cessna extends Airplane {
   }
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Evitar la comprobación de tipos (parte 1)
 JavaScript no es tipado, lo que significa que sus funciones pueden tomar cualquier tipo de argumento.
@@ -717,7 +717,7 @@ function travelToTexas(vehicle) {
   vehicle.move(this.currentLocation, new Location('texas'));
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Evitar la comprobación de tipos (parte 2)
 Si está trabajando con valores primitivos básicos como cadenas, enteros, y arreglos,
@@ -742,7 +742,7 @@ function combine(val1, val2) {
   return val1 + val2;
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### No sobre-optimizar
 Los navegadores modernos hacen un montón de optimización en tiempo de ejecución. Muchas veces, si usted está optimizando entonces usted está perdiendo su tiempo. [Hay buenos recursos](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers)
@@ -764,7 +764,7 @@ for (let i = 0; i < list.length; i++) {
   // ...
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Eliminar código muerto
 El código muerto es tan malo como el código duplicado. No hay razón para mantenerlo en su código base. Si no se está llamando, desaste de eso! Seguirá estando seguro en tu historial de versiones si todavía lo necesitas.
@@ -793,7 +793,7 @@ function newRequestModule(url) {
 const req = newRequestModule;
 inventoryTracker('apples', req, 'www.inventory-awesome.io');
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ## **Objetos y Estructura de Datos**
 ### Utiliza getters y setters
@@ -853,7 +853,7 @@ bankAccount.balance -= shoesPrice;
 let balance = bankAccount.balance;
 
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 
 ### Make objects have private members
@@ -889,7 +889,7 @@ console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 delete employee.name;
 console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 
 ## **Clases**
@@ -942,7 +942,7 @@ class UserSettings {
   }
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Principio abierto/cerrado (OCP)
 Según Bertrand Meyer, "las entidades de software (classes, modules, functions,
@@ -980,7 +980,7 @@ class AjaxRequester {
   }
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 
 ### Principio de sustitución de Liskov (LSP)
@@ -1108,7 +1108,7 @@ function renderLargeShapes(shapes) {
 const shapes = [new Rectangle(), new Rectangle(), new Square()];
 renderLargeShapes(shapes);
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Principio de Segregación de Interfaz (ISP)
 JavaScript no tiene interfaces por lo que este principio no se aplica tan estrictamente como otros. Sin embargo, es importante y relevante, incluso con JavaScript que no es tipado.
@@ -1175,7 +1175,7 @@ const $ = new DOMTraverser({
   }
 });
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Principio de inversión de dependencias (DIP)
 Este principio establece dos cosas esenciales:
@@ -1260,7 +1260,7 @@ class InventoryRequesterV2 {
 const inventoryTracker = new InventoryTracker(['apples', 'bananas'], new InventoryRequesterV2());
 inventoryTracker.requestItems();
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Prefeir clases ES2015/ES6 sobre funciones planas de ES5
 Es muy difícil obtener herencia de clases legible, construcción y definicion de metodos para las clasicas clases de ES5. Si necesita herencia (Y tenga en cuenta que tal vez no), entonces prefiera las clases. Sin embargo, prefiera las funciones pequeñas sobre las clases hasta que se encuentre necesitando objetos más grandes y más complejos.
@@ -1332,7 +1332,7 @@ class Human extends Mammal {
   speak() { /* ... */ }
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 
 ### Use method chaining
@@ -1417,7 +1417,7 @@ const car = new Car()
   .setModel('F-150')
   .save();
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Prefer composition over inheritance
 As stated famously in [*Design Patterns*](https://en.wikipedia.org/wiki/Design_Patterns) by the Gang of Four,
@@ -1483,7 +1483,7 @@ class Employee {
   // ...
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ## **Testing**
 Testing is more important than shipping. If you have no tests or an
@@ -1551,7 +1551,7 @@ describe('MakeMomentJSGreatAgain', () => {
   });
 });
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ## **Concurrency**
 ### Use Promises, not callbacks
@@ -1590,7 +1590,7 @@ require('request-promise').get('https://en.wikipedia.org/wiki/Robert_Cecil_Marti
   });
 
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Async/Await are even cleaner than Promises
 Promises are a very clean alternative to callbacks, but ES2017/ES8 brings async and await
@@ -1629,7 +1629,7 @@ async function getCleanCodeArticle() {
   }
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 
 ## **Error Handling**
@@ -1702,7 +1702,7 @@ getdata()
 });
 ```
 
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 
 ## **Formatting**
@@ -1749,7 +1749,7 @@ function restoreDatabase() {}
 class Animal {}
 class Alpaca {}
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 
 ### Function callers and callees should be close
@@ -1835,7 +1835,7 @@ const review = new PerformanceReview(employee);
 review.perfReview();
 ```
 
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ## **Comments**
 ### Only comment things that have business logic complexity.
@@ -1879,7 +1879,7 @@ function hashIt(data) {
 }
 
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Don't leave commented out code in your codebase
 Version control exists for a reason. Leave old code in your history.
@@ -1896,7 +1896,7 @@ doStuff();
 ```javascript
 doStuff();
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Don't have journal comments
 Remember, use version control! There's no need for dead code, commented code,
@@ -1921,7 +1921,7 @@ function combine(a, b) {
   return a + b;
 }
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
 
 ### Avoid positional markers
 They usually just add noise. Let the functions and variable names along with the
@@ -1956,4 +1956,4 @@ const actions = function() {
   // ...
 };
 ```
-**[⬆ volver arriba](#table-of-contents)**
+**[⬆ volver arriba](#tabla-de-contenidos)**
