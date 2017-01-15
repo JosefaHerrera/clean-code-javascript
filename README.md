@@ -6,8 +6,8 @@
   3. [Funciones](#funciones)
   4. [Objetos y Estructura de Datos](#objetos-y-estructura-de-datos)
   5. [Clases](#clases)
-  6. [Testing](#testing)
-  7. [Concurrency](#concurrency)
+  6. [Pruebas](#pruebas)
+  7. [Concurrencia](#concurrencia)
   8. [Error Handling](#error-handling)
   9. [Formatting](#formatting)
   10. [Comments](#comments)
@@ -1335,14 +1335,10 @@ class Human extends Mammal {
 **[⬆ volver arriba](#tabla-de-contenidos)**
 
 
-### Use method chaining
-Against the advice of Clean Code, this is one place where we will have to differ.
-It has been argued that method chaining is unclean and violates the [Law of Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter).
-Maybe it's true, but this pattern is very useful in JavaScript and you see it in
-many libraries such as jQuery and Lodash. It allows your code to be expressive,
-and less verbose. For that reason, I say, use method chaining and take a look at
-how clean your code will be. In your class functions, simply return `this` at
-the end of every function, and you can chain further class methods onto it.
+### Utiliza encadenamiento de métodos
+Contra el consejo de Codigo Limpio, este es un lugar donde tendremos que diferir.
+Se ha argumentado que el encadenamiento de métodos es impuro y viola la [Ley de Demeter](https://en.wikipedia.org/wiki/Law_of_Demeter).
+Tal vez es cierto, pero este patrón es muy útil en JavaScript y lo ves en muchas bibliotecas como jQuery y Lodash. It allows your code to be expressive, and less verbose. Por eso, digo, use el encadenamiento de métodos y eche un vistazo a lo limpio que es su código. En las funciones de tu clase, simplemente devuelve `this` al final de cada función, y puedes encadenar métodos de clase adicionales en él.
 
 **Mal:**
 ```javascript
@@ -1419,23 +1415,16 @@ const car = new Car()
 ```
 **[⬆ volver arriba](#tabla-de-contenidos)**
 
-### Prefer composition over inheritance
-As stated famously in [*Design Patterns*](https://en.wikipedia.org/wiki/Design_Patterns) by the Gang of Four,
-you should prefer composition over inheritance where you can. There are lots of
-Bien reasons to use inheritance and lots of Bien reasons to use composition.
-The main point for this maxim is that if your mind instinctively goes for
-inheritance, try to think if composition could model your problem better. In some
-cases it can.
+### Preferir la composición sobre la herencia
+Como se ha afirmado en [*Design Patterns*](https://en.wikipedia.org/wiki/Design_Patterns) Por la pandilla de cuatro, debe preferir la composición sobre la herencia siempre que puedas. Hay muchas buenas razones para usar la herencia y tambien muchas buenas razones para usar la composición.
+El punto principal de esta máxima es que si su mente instintivamente va para la herencia, trate de pensar si la composición podría modelar mejor su problema. En algunos casos puede.
 
-You might be wondering then, "when should I use inheritance?" It
-depends on your problem at hand, but this is a decent list of when inheritance
-makes more sense than composition:
+Usted puede ser que se pregunte entonces, "cuándo debo usar la herencia?" Depende de su problema a mano, pero esta es una lista decente de cuando la herencia tiene más sentido que la composición:
 
-1. Your inheritance represents an "is-a" relationship and not a "has-a"
-relationship (Animal->Human vs. User->UserDetails).
-2. You can reuse code from the base classes (Humans can move like all animals).
-3. You want to make global changes to derived classes by changing a base class.
-(Change the caloric expenditure of all animals when they move).
+1. Su herencia representa una relación "es-un" y no una relación "tiene-un"
+(Animal->Human vs. User->UserDetails).
+2. Puede reutilizar código de las clases base (Los humanos pueden moverse como todos los animales).
+3. Desea realizar cambios globales en clases derivadas cambiando una clase base. (Cambiar el gasto calórico de todos los animales cuando se mueven).
 
 **Mal:**
 ```javascript
@@ -1485,24 +1474,13 @@ class Employee {
 ```
 **[⬆ volver arriba](#tabla-de-contenidos)**
 
-## **Testing**
-Testing is more important than shipping. If you have no tests or an
-inadequate amount, then every time you ship code you won't be sure that you
-didn't break anything. Deciding on what constitutes an adequate amount is up
-to your team, but having 100% coverage (all statements and branches) is how
-you achieve very high confidence and developer peace of mind. This means that
-in addition to having a great testing framework, you also need to use a
-[Bien coverage tool](http://gotwarlost.github.io/istanbul/).
+## **Pruebas**
+La prueba es más importante que la entrega. Si no tiene pruebas o una cantidad inadecuada, entonces cada vez que entregue código no estará seguro de que no rompió nada. Decidir cual es una cantidad adecuada depende de su equipo, pero con un 100% de cobertura (Todas las declaraciones y ramas) es cómo logra una confianza muy alta y la tranquilidad del desarrollador. Esto significa que además de tener un gran framework de pruebas, Usted también necesita usar una [Buena herramienta de cobertura](http://gotwarlost.github.io/istanbul/).
 
-There's no excuse to not write tests. There's [plenty of Bien JS test frameworks]
-(http://jstherightway.org/#testing-tools), so find one that your team prefers.
-When you find one that works for your team, then aim to always write tests
-for every new feature/module you introduce. If your preferred method is
-Test Driven Development (TDD), that is great, but the main point is to just
-make sure you are reaching your coverage goals before launching any feature,
-or refactoring an existing one.
+There's no excuse to not write tests. There's [plenty of Bien JS test frameworks](http://jstherightway.org/#testing-tools), así que encuentre uno que a su equipo le guste.
+Cuando encuentres uno que funcione para tu equipo, A continuación, intente escribir siempre pruebas para cada nueva función/módulo que introduzca. Si su método preferido es Test Driven Development (TDD), eso es genial, Pero el punto principal es asegurarse de que está alcanzando sus objetivos de cobertura antes de lanzar cualquier característica, o refactorizar una existente.
 
-### Single concept per test
+### Un único concepto por prueba
 
 **Mal:**
 ```javascript
@@ -1553,8 +1531,8 @@ describe('MakeMomentJSGreatAgain', () => {
 ```
 **[⬆ volver arriba](#tabla-de-contenidos)**
 
-## **Concurrency**
-### Use Promises, not callbacks
+## **Concurrencia**
+### Use promesas, no callbacks
 Callbacks aren't clean, and they cause excessive amounts of nesting. With ES2015/ES6,
 Promises are a built-in global type. Use them!
 
