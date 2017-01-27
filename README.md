@@ -8,7 +8,7 @@
   5. [Clases](#clases)
   6. [Pruebas](#pruebas)
   7. [Concurrencia](#concurrencia)
-  8. [Error Handling](#error-handling)
+  8. [Error Handling](#manejo-de-errores)
   9. [Formatting](#formatting)
   10. [Comments](#comments)
 
@@ -1533,8 +1533,7 @@ describe('MakeMomentJSGreatAgain', () => {
 
 ## **Concurrencia**
 ### Use promesas, no callbacks
-Callbacks aren't clean, and they cause excessive amounts of nesting. With ES2015/ES6,
-Promises are a built-in global type. Use them!
+Los callbacks no son limpios, y causan cantidades excesivas de anidamiento. Con ES2015/ES6, las promesas son un tipo global incorporado. Usalos, usalos!
 
 **Mal:**
 ```javascript
@@ -1570,12 +1569,8 @@ require('request-promise').get('https://en.wikipedia.org/wiki/Robert_Cecil_Marti
 ```
 **[⬆ volver arriba](#tabla-de-contenidos)**
 
-### Async/Await are even cleaner than Promises
-Promises are a very clean alternative to callbacks, but ES2017/ES8 brings async and await
-which offer an even cleaner solution. All you need is a function that is prefixed
-in an `async` keyword, and then you can write your logic imperatively without
-a `then` chain of functions. Use this if you can take advantage of ES2017/ES8 features
-today!
+### Async/Await son incluso más limpias que las Promesas
+Las promesas son una alternativa muy limpia a los callbacks, pero ES2017/ES8 trae async y wait que ofrecen una solución aún más limpia. Todo lo que necesitas es una función que está prefijada en una palabra clave `async`, y entonces puedes escribir tu lógica imperativamente sin una cadena` then` de funciones. Utilice esto si puedes aprovechar las características de ES2017/ES8 hoy!
 
 **Mal:**
 ```javascript
@@ -1610,8 +1605,8 @@ async function getCleanCodeArticle() {
 **[⬆ volver arriba](#tabla-de-contenidos)**
 
 
-## **Error Handling**
-Thrown errors are a Bien thing! They mean the runtime has successfully
+## **Manejo de errores**
+Los errores arrojados son algo bueno! They mean the runtime has successfully
 identified when something in your program has gone wrong and it's letting
 you know by stopping function execution on the current stack, killing the
 process (in Node), and notifying you in the console with a stack trace.
