@@ -9,7 +9,7 @@
   6. [Pruebas](#pruebas)
   7. [Concurrencia](#concurrencia)
   8. [Error Handling](#manejo-de-errores)
-  9. [Formateo(#formateo)
+  9. [Formateo](#formateo)
   10. [Comentarios](#comentarios)
 
 ## Introducción
