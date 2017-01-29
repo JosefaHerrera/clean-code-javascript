@@ -9,8 +9,8 @@
   6. [Pruebas](#pruebas)
   7. [Concurrencia](#concurrencia)
   8. [Error Handling](#manejo-de-errores)
-  9. [Formatting](#formatting)
-  10. [Comments](#comments)
+  9. [Formateo(#formateo)
+  10. [Comentarios](#comentarios)
 
 ## Introducción
 ![Imagen humorística de la estimación de la calidad del software como un recuento de cuantos WTFs al leer el código](http://www.osnews.com/images/comics/wtfm.jpg)
@@ -1606,18 +1606,10 @@ async function getCleanCodeArticle() {
 
 
 ## **Manejo de errores**
-Los errores arrojados son algo bueno! They mean the runtime has successfully
-identified when something in your program has gone wrong and it's letting
-you know by stopping function execution on the current stack, killing the
-process (in Node), and notifying you in the console with a stack trace.
+Los errores arrojados son algo bueno! significan que en tiempo de ejecucion se ha eidentificado que algo salio mal, y no los hace saber deteniendo la ejecucion de la funcion, matando el proceso (en Node), y notificandole en la consola con un error.
 
-### Don't ignore caught errors
-Doing nothing with a caught error doesn't give you the ability to ever fix
-or react to said error. Logging the error to the console (`console.log`)
-isn't much better as often times it can get lost in a sea of things printed
-to the console. If you wrap any bit of code in a `try/catch` it means you
-think an error may occur there and therefore you should have a plan,
-or create a code path, for when it occurs.
+### No ignore los errores capturados
+No hacer nada con un error detectado no le da la capacidad de reparar o reaccionar a dicho error. Registrar el error en la consola (`console.log`) no es mucho mejor ya que muchas veces se puede perder en un mar de cosas impresas a la consola. Si envuelve algún código en una `try/catch` Significa que usted piensa que un error puede ocurrir allí y por lo tanto usted debe tener un plan, o crear un path del código, para cuando ocurra.
 
 **Mal:**
 ```javascript
@@ -1678,20 +1670,15 @@ getdata()
 **[⬆ volver arriba](#tabla-de-contenidos)**
 
 
-## **Formatting**
-Formatting is subjective. Like many rules herein, there is no hard and fast
-rule that you must follow. The main point is DO NOT ARGUE over formatting.
-There are [tons of tools](http://standardjs.com/rules.html) to automate this.
-Use one! It's a waste of time and money for engineers to argue over formatting.
+## **Formateo**
+El formato es subjetivo. Como muchas reglas aquí, no hay una regla rigida y rápida que debas seguir. El punto principal es no discutir sobre el formato.
+Hay [toneladas de herramientas](http://standardjs.com/rules.html) para automatizar esto.
+¡Usa uno! Es una pérdida de tiempo y dinero para los ingenieros discutir sobre el formato.
 
-For things that don't fall under the purview of automatic formatting
-(indentation, tabs vs. spaces, double vs. single quotes, etc.) look here
-for some guidance.
+Para las cosas que no caen en el ámbito del formato automático (identación, tabs vs. spaces, dobles vs. comillas simples, etc.) busque aquí alguna orientación.
 
-### Use consistent capitalization
-JavaScript is untyped, so capitalization tells you a lot about your variables,
-functions, etc. These rules are subjective, so your team can choose whatever
-they want. The point is, no matter what you all choose, just be consistent.
+### Utilice mayúsculas consistentes
+JavaScript no es tipado, por lo que las mayusculas dice mucho acerca de sus variables, funciones, etc. Estas reglas son subjetivas, Para que su equipo pueda elegir lo que quiera.El punto es, no importa lo que todos elijan, sólo sean consistentes.
 
 **Mal:**
 ```javascript
@@ -1725,10 +1712,8 @@ class Alpaca {}
 **[⬆ volver arriba](#tabla-de-contenidos)**
 
 
-### Function callers and callees should be close
-If a function calls another, keep those functions vertically close in the source
-file. Ideally, keep the caller right above the callee. We tend to read code from
-top-to-bottom, like a newspaper. Because of this, make your code read that way.
+### Las declaraciones y las llamadas de la función deben estar cerca
+Si una función llama a otrar, manten esas funciones muy cerca en tu codigo fuente. Idealmente, mantenga la llamada de la funcion justo encima de la declaracion. Tendemos a leer el código de arriba a abajo, como un periódico . Debido a esto, haga que su código se lea de esa manera.
 
 **Mal:**
 ```javascript
@@ -1810,9 +1795,9 @@ review.perfReview();
 
 **[⬆ volver arriba](#tabla-de-contenidos)**
 
-## **Comments**
-### Only comment things that have business logic complexity.
-Comments are an apology, not a requirement. Bien code *mostly* documents itself.
+## **Comentarios**
+### Solo comenta cosas que tengan logica de negocio muy compleja.
+Los comentarios son una disculpa, no un requerimiento. El buen codigo *en su mayoria* se documenta asi mismo.
 
 **Mal:**
 ```javascript
@@ -1854,8 +1839,8 @@ function hashIt(data) {
 ```
 **[⬆ volver arriba](#tabla-de-contenidos)**
 
-### Don't leave commented out code in your codebase
-Version control exists for a reason. Leave old code in your history.
+### No deje comentado código en su código base
+El control de versiones existe por una razón. Deja el código antiguo en tu historial.
 
 **Mal:**
 ```javascript
@@ -1871,9 +1856,9 @@ doStuff();
 ```
 **[⬆ volver arriba](#tabla-de-contenidos)**
 
-### Don't have journal comments
-Remember, use version control! There's no need for dead code, commented code,
-and especially journal comments. Use `git log` to get history!
+### Elimina comentarios desactualizados 
+Recuerda, usa control de versiones! No hay necesidad de código muerto, codigo comentado,
+y especialmente cometarios antiguos. Usa `git log` para obtener el historial!
 
 **Mal:**
 ```javascript
@@ -1896,9 +1881,8 @@ function combine(a, b) {
 ```
 **[⬆ volver arriba](#tabla-de-contenidos)**
 
-### Avoid positional markers
-They usually just add noise. Let the functions and variable names along with the
-proper indentation and formatting give the visual structure to your code.
+### Evitar marcadores posicionales
+Por lo general sólo añaden ruido. Deje que las funciones y los nombres de las variables junto con la indentación y el formato adecuados den la estructura visual a su código.
 
 **Mal:**
 ```javascript
